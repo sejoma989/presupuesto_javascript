@@ -34,8 +34,23 @@ let cargarCabecero = () => {
     // console.log(totalIngresos());
     // console.log(totalEgresos());
     console.log(porcentajeEgreso);
-    document.getElementById('presupuesto').innerHTML = presupuesto;
-    document.getElementById('porcentaje').innerHTML = porcentajeEgreso;
-    document.getElementById('ingresos').innerHTML = totalIngresos();
-    document.getElementById('egresos').innerHTML = totalEgresos();
+    document.getElementById('presupuesto').innerHTML = formatoMoneda(presupuesto);
+    document.getElementById('porcentaje').innerHTML = formatoPorcentaje(porcentajeEgreso);
+    document.getElementById('ingresos').innerHTML = formatoMoneda(totalIngresos());
+    document.getElementById('egresos').innerHTML = formatoMoneda(totalEgresos());
+}
+
+let formatoMoneda = ( valor ) => {
+    return valor.toLocaleString('en-US', {
+        style:'currency',
+        currency: 'USD',
+        minimumFractionDigits:2
+    });
+}
+
+let formatoPorcentaje = ( valor ) => {
+    return valor.toLocaleString('en-US', {
+        style:'percent',
+        minimumFractionDigits:2
+    });
 }
