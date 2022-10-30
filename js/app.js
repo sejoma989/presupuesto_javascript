@@ -1,6 +1,7 @@
 const ingresos = [
     new Ingreso('Salario', 2200.00),
     new Ingreso('Venta coche', 1500.00),
+    // new Ingreso('Ocasionales', 2500.00)
 ];
 
 const egresos = [
@@ -126,3 +127,24 @@ const eliminarEgreso = ( id ) => {
     cargarEgresos();
 }
 
+
+let agregarDato = () => {
+    let forma = document.forms['forma'];
+    let tipo = forma['tipo'];
+    let descripcion = forma['descripcion'];
+    let valor = forma['valor'];
+
+    if ( descripcion.value !== '' && valor.value !== '' ){
+        if ( tipo.value === 'ingreso' ){
+            ingresos.push( new Ingreso( descripcion.value, +valor.value ) );
+            cargarCabecero();
+            cargarIngresos();
+        }
+        else if ( tipo.value === 'egreso' ){
+            egresos.push( new Egreso( descripcion.value, +valor.value ) );
+            cargarCabecero();
+            cargarEgresos();
+        }
+    }
+
+}
