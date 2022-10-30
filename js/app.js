@@ -53,7 +53,7 @@ let formatoMoneda = ( valor ) => {
 let formatoPorcentaje = ( valor ) => {
     return valor.toLocaleString('en-US', {
         style:'percent',
-        minimumFractionDigits:2
+        minimumFractionDigits:1
     });
 }
 
